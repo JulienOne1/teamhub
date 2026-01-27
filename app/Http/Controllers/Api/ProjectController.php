@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Resources\ProjectResource;
+use App\Http\Resources\TaskResource;
 
 class ProjectController extends Controller
 {
@@ -15,7 +17,7 @@ class ProjectController extends Controller
         
         return response()->json([
             'success' => true,
-            'data' => $projects
+            'data' => ProjectResource::collection($projects)
         ]);
     }
 
@@ -36,7 +38,7 @@ class ProjectController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Project created successfully',
-            'data' => $project
+            'data' => new ProjectResource($project)
         ], 201);
     }
 
@@ -46,7 +48,7 @@ class ProjectController extends Controller
         
         return response()->json([
             'success' => true,
-            'data' => $project
+            'data' => new ProjectResource($project)
         ]);
     }
 
@@ -67,7 +69,7 @@ class ProjectController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Project updated successfully',
-            'data' => $project
+            'data' => new ProjectResource($project)
         ]);
     }
 
@@ -87,7 +89,7 @@ class ProjectController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $tasks
+            'data' => TaskResource::collection($tasks)
         ]);
     }
 }

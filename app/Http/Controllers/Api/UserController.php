@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Resources\UserResource;
+use App\Http\Resources\ProjectResource;
+use App\Http\Resources\TaskResource;
 
 class UserController extends Controller
 {
@@ -15,7 +18,7 @@ class UserController extends Controller
         
         return response()->json([
             'success' => true,
-            'data' => $users
+            'data' => UserResource::collection($users)
         ]);
     }
 
@@ -23,7 +26,7 @@ class UserController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => $user
+            'data' => new UserResource($user)
         ]);
     }
 
@@ -33,7 +36,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $projects
+            'data' => ProjectResource::collection($projects)
         ]);
     }
 
@@ -43,7 +46,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $tasks
+            'data' => TaskResource::collection($tasks)
         ]);
     }
 }

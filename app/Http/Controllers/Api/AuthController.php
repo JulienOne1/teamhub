@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\UserResource;
 
 class AuthController extends Controller
 {
@@ -31,7 +32,7 @@ class AuthController extends Controller
             'success' => true,
             'message' => 'User registered successfully',
             'data' => [
-                'user' => $user,
+                'user' => new UserResource($user),
                 'access_token' => $token,
                 'token_type' => 'Bearer',
             ]
@@ -62,7 +63,7 @@ class AuthController extends Controller
             'success' => true,
             'message' => 'Login successful',
             'data' => [
-                'user' => $user,
+                'user' => new UserResource($user),
                 'access_token' => $token,
                 'token_type' => 'Bearer',
             ]
@@ -83,7 +84,7 @@ class AuthController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => $request->user()
+            'data' => new UserResource($request->user())
         ]);
     }
 }
