@@ -1,0 +1,44 @@
+### Registration
+POST http://teamhub.test/api/register
+Content-Type: application/json
+
+{
+    "name": "Test User",
+    "email": "test@example.com",
+    "password": "password123",
+    "password_confirmation": "password123"
+}
+
+### Login mit Test User
+POST http://teamhub.test/api/login
+Content-Type: application/json
+
+{
+    "email": "test@example.com",
+    "password": "password123"
+}
+
+### Login mit Admin User (aus Seeder)
+POST http://teamhub.test/api/login
+Content-Type: application/json
+
+{
+    "email": "admin@teamhub.test",
+    "password": "password"
+}
+
+### Get Current User (benötigt Token)
+GET http://teamhub.test/api/me
+Authorization: Bearer 9|kkzywYqjBw3utfZEbOPKFLOm3Hafou4ZWZvfeRxK1694b3e8
+
+### Get All Projects (benötigt Token)
+GET http://teamhub.test/api/projects
+Authorization: Bearer 9|kkzywYqjBw3utfZEbOPKFLOm3Hafou4ZWZvfeRxK1694b3e8
+
+### Get Specific Project
+GET http://teamhub.test/api/projects/1
+Authorization: Bearer 9|kkzywYqjBw3utfZEbOPKFLOm3Hafou4ZWZvfeRxK1694b3e8
+
+### Logout (benötigt Token)
+POST http://teamhub.test/api/logout
+Authorization: Bearer 9|kkzywYqjBw3utfZEbOPKFLOm3Hafou4ZWZvfeRxK1694b3e8
