@@ -10,7 +10,7 @@
     </div>
 
     <div class="bg-white shadow sm:rounded-lg">
-        <form action="{{ route('tasks.update', $task) }}" method="POST" class="space-y-6 p-6">
+        <form action="{{ url('/tasks/' . $task->id) }}" method="POST" class="space-y-6 p-6">
             @csrf
             @method('PUT')
 
@@ -115,7 +115,7 @@
                     Delete Task
                 </button>
                 <div class="flex gap-3">
-                    <a href="{{ route('tasks.show', $task) }}" class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                    <a href="{{ url('/tasks/' . $task->id) }}" class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                         Cancel
                     </a>
                     <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
@@ -126,7 +126,7 @@
         </form>
 
         <!-- Delete Form -->
-        <form id="delete-form" action="{{ route('tasks.destroy', $task) }}" method="POST" class="hidden">
+        <form id="delete-form" action="{{ url('/tasks/' . $task->id) }}" method="POST" class="hidden">
             @csrf
             @method('DELETE')
         </form>
