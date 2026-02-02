@@ -67,7 +67,7 @@
     <div class="bg-white shadow rounded-lg mb-8">
         <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
             <h2 class="text-lg font-medium text-gray-900">Recent Projects</h2>
-            <a href="{{ route('projects.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+            <a href="{{ url('/projects/create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
                 New Project
             </a>
         </div>
@@ -75,7 +75,7 @@
             <ul class="divide-y divide-gray-200">
                 @forelse($recent_projects as $project)
                 <li class="px-4 py-4 sm:px-6 hover:bg-gray-50">
-                    <a href="{{ route('projects.show', $project) }}" class="block">
+                    <a href="{{ url('/projects/' . $project->id) }}" class="block">
                         <div class="flex items-center justify-between">
                             <div class="flex-1 min-w-0">
                                 <p class="text-sm font-medium text-blue-600 truncate">{{ $project->name }}</p>
@@ -105,7 +105,7 @@
     <div class="bg-white shadow rounded-lg">
         <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
             <h2 class="text-lg font-medium text-gray-900">Recent Tasks</h2>
-            <a href="{{ route('tasks.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+            <a href="{{ url('/tasks/create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
                 New Task
             </a>
         </div>
@@ -113,7 +113,7 @@
             <ul class="divide-y divide-gray-200">
                 @forelse($recent_tasks as $task)
                 <li class="px-4 py-4 sm:px-6 hover:bg-gray-50">
-                    <a href="{{ route('tasks.show', $task) }}" class="block">
+                    <a href="{{ url('/tasks/' . $task->id) }}" class="block">
                         <div class="flex items-center justify-between">
                             <div class="flex-1 min-w-0">
                                 <p class="text-sm font-medium text-blue-600 truncate">{{ $task->title }}</p>
