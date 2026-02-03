@@ -46,7 +46,7 @@ An internal web application for managing employees, projects, and tasks. Built w
 
 1. **Clone repository**
 ```bash
-git clone https://github.com/DEIN-USERNAME/teamhub.git
+git clone https://github.com/JulienOne1/teamhub.git
 cd teamhub
 ```
 
