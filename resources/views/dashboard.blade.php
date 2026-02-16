@@ -64,7 +64,7 @@
     </div>
 
     <!-- Recent Projects -->
-    <div class="bg-white shadow rounded-lg mb-8">
+    <div class="glass shadow-2xl rounded-lg mb-8">
         <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
             <h2 class="text-lg font-medium text-gray-900">Recent Projects</h2>
             <a href="{{ url('/projects/create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
@@ -102,7 +102,7 @@
     </div>
 
     <!-- Recent Tasks -->
-    <div class="bg-white shadow rounded-lg">
+    <div class="glass shadow-2xl rounded-lg">
         <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
             <h2 class="text-lg font-medium text-gray-900">Recent Tasks</h2>
             <a href="{{ url('/tasks/create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
