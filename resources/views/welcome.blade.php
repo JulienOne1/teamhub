@@ -86,6 +86,27 @@
 
     <div class="max-w-6xl mx-auto">
 
+    <!--ÜBERSCHRIFT-->
+    <div class="text-center mb-12 mt-8">
+        <h1 class="text-8xl font-black mb-4" style="
+            font-size: 8rem;
+            background: linear-gradient(135deg, #f5f790 0%, #e8873a 50%, #f9fc6c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.6))
+                    drop-shadow(0px 4px 8px rgba(251, 191, 36, 0.4));
+            letter-spacing: -0.02em;
+        ">
+            TeamHub
+        </h1>
+        <p class="text-2xl font-bold text-white opacity-90" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);">
+            Your Team, Your Projects, Your Success
+        </p>
+    </div>
+
+<div class="max-w-6xl mx-auto">
+
         <!-- Hero Section -->
         <div class="glass rounded-3xl shadow-2xl p-12 mb-8 text-center">
             <h2 class="text-5xl font-bold text-gray-800 mb-6">
