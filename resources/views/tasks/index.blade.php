@@ -7,13 +7,69 @@
     <div class="sm:flex sm:items-center sm:justify-between mb-8">
         <div>
             <h1 class="text-3xl font-bold text-gray-900">Tasks</h1>
-            <p class="mt-2 text-sm text-gray-700">A list of all tasks across all projects.</p>
+            <p class="mt-2 text-sm text-gray-200">A list of all tasks across all projects.</p>
         </div>
         <div class="mt-4 sm:mt-0">
             <a href="{{ url('/tasks/create') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
                 Create Task
             </a>
         </div>
+    </div>
+
+    <!-- Filter & Sort Bar -->
+    <div class="glass rounded-2xl p-4 mb-6 shadow-xl">
+        <form method="GET" action="{{ url('/tasks') }}" class="flex flex-wrap gap-4 items-center">
+            <!-- Filter nach Priority -->
+            <div class="flex items-center gap-2">
+                <label class="text-sm font-bold text-gray-800">Priority:</label>
+                <select name="priority" onchange="this.form.submit()"
+                    class="rounded-lg border-gray-300 text-sm shadow-sm focus:border-emerald-500 focus:ring-emerald-500 bg-white bg-opacity-70">
+                    <option value="" {{ $currentPriority == '' ? 'selected' : '' }}>All</option>
+                    <option value="urgent" {{ $currentPriority == 'urgent' ? 'selected' : '' }}>🔴 Urgent</option>
+                    <option value="high" {{ $currentPriority == 'high' ? 'selected' : '' }}>🟠 High</option>
+                    <option value="medium" {{ $currentPriority == 'medium' ? 'selected' : '' }}>🟡 Medium</option>
+                    <option value="low" {{ $currentPriority == 'low' ? 'selected' : '' }}>🟢 Low</option>
+                </select>
+            </div>
+
+            <!-- Filter nach Status -->
+            <div class="flex items-center gap-2">
+                <label class="text-sm font-bold text-gray-800">Status:</label>
+                <select name="status" onchange="this.form.submit()"
+                    class="rounded-lg border-gray-300 text-sm shadow-sm focus:border-emerald-500 focus:ring-emerald-500 bg-white bg-opacity-70">
+                    <option value="" {{ $currentStatus == '' ? 'selected' : '' }}>All</option>
+                    <option value="todo" {{ $currentStatus == 'todo' ? 'selected' : '' }}>To Do</option>
+                    <option value="in_progress" {{ $currentStatus == 'in_progress' ? 'selected' : '' }}>In Progress</option>
+                    <option value="review" {{ $currentStatus == 'review' ? 'selected' : '' }}>Review</option>
+                    <option value="done" {{ $currentStatus == 'done' ? 'selected' : '' }}>Done</option>
+                </select>
+            </div>
+
+            <!-- Sortierung -->
+            <div class="flex items-center gap-2">
+                <label class="text-sm font-bold text-gray-800">Sort by:</label>
+                <select name="sort" onchange="this.form.submit()"
+                    class="rounded-lg border-gray-300 text-sm shadow-sm focus:border-emerald-500 focus:ring-emerald-500 bg-white bg-opacity-70">
+                    <option value="latest" {{ $currentSort == 'latest' ? 'selected' : '' }}>Newest First</option>
+                    <option value="oldest" {{ $currentSort == 'oldest' ? 'selected' : '' }}>Oldest First</option>
+                    <option value="priority" {{ $currentSort == 'priority' ? 'selected' : '' }}>Priority</option>
+                    <option value="due_date" {{ $currentSort == 'due_date' ? 'selected' : '' }}>Due Date</option>
+                    <option value="status" {{ $currentSort == 'status' ? 'selected' : '' }}>Status</option>
+                </select>
+            </div>
+
+            <!-- Reset -->
+            @if($currentPriority || $currentStatus || $currentSort != 'latest')
+            <a href="{{ url('/tasks') }}" class="px-3 py-1 text-sm bg-white bg-opacity-50 rounded-lg text-gray-800 hover:bg-opacity-70 transition">
+                ✕ Reset
+            </a>
+            @endif
+
+            <!-- Ergebnis Anzahl -->
+            <span class="text-sm text-gray-800 font-medium ml-auto">
+                {{ $tasks->total() }} task(s) found
+            </span>
+        </form>
     </div>
 
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">

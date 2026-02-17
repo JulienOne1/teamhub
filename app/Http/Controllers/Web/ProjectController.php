@@ -9,10 +9,29 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::with(['owner', 'tasks'])->latest()->paginate(10);
-        return view('projects.index', compact('projects'));
+        $query = Project::with(['owner', 'tasks']);
+
+        // Sortierung nach Status
+        if ($request->has('status') && $request->status != '') {
+            $query->where('status', $request->status);
+        }
+
+        // Sortierung nach Datum
+        $sort = $request->get('sort', 'latest');
+        match($sort) {
+            'oldest' => $query->oldest(),
+            'name' => $query->orderBy('name'),
+            'status' => $query->orderBy('status'),
+            default => $query->latest(),
+        };
+
+        $projects = $query->paginate(10);
+        $currentStatus = $request->get('status', '');
+        $currentSort = $sort;
+
+        return view('projects.index', compact('projects', 'currentStatus', 'currentSort'));
     }
     
     public function create()

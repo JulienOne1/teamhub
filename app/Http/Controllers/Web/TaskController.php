@@ -10,10 +10,36 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::with(['project', 'assignedUser', 'creator'])->latest()->paginate(15);
-        return view('tasks.index', compact('tasks'));
+        $query = Task::with(['project', 'assignedUser', 'creator']);
+
+        // Filter nach Priority
+        if ($request->has('priority') && $request->priority != '') {
+            $query->where('priority', $request->priority);
+        }
+
+        // Filter nach Status
+        if ($request->has('status') && $request->status != '') {
+            $query->where('status', $request->status);
+        }
+
+        // Sortierung
+        $sort = $request->get('sort', 'latest');
+        match($sort) {
+            'oldest' => $query->oldest(),
+            'priority' => $query->orderByRaw("FIELD(priority, 'urgent', 'high', 'medium', 'low')"),
+            'due_date' => $query->orderBy('due_date'),
+            'status' => $query->orderBy('status'),
+            default => $query->latest(),
+        };
+
+        $tasks = $query->paginate(15);
+        $currentPriority = $request->get('priority', '');
+        $currentStatus = $request->get('status', '');
+        $currentSort = $sort;
+
+        return view('tasks.index', compact('tasks', 'currentPriority', 'currentStatus', 'currentSort'));
     }
 
     public function create()
