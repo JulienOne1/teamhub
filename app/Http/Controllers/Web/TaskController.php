@@ -11,36 +11,46 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     public function index(Request $request)
-    {
-        $query = Task::with(['project', 'assignedUser', 'creator']);
+{
+    $query = Task::with(['project', 'assignedUser', 'creator']);
 
-        // Filter nach Priority
-        if ($request->has('priority') && $request->priority != '') {
-            $query->where('priority', $request->priority);
-        }
+    // Filter nach Priority
+    if ($request->has('priority') && $request->priority != '') {
+        $query->where('priority', $request->priority);
+    }
 
-        // Filter nach Status
-        if ($request->has('status') && $request->status != '') {
-            $query->where('status', $request->status);
-        }
+    // Filter nach Status
+    if ($request->has('status') && $request->status != '') {
+        $query->where('status', $request->status);
+    }
 
-        // Sortierung
-        $sort = $request->get('sort', 'latest');
+    // Sortierung
+    $sort = $request->get('sort', 'latest');
+    
+    if ($sort === 'priority') {
+        // SQLite-kompatible Priority-Sortierung mit CASE
+        $query->orderByRaw("CASE priority 
+            WHEN 'urgent' THEN 1 
+            WHEN 'high' THEN 2 
+            WHEN 'medium' THEN 3 
+            WHEN 'low' THEN 4 
+            ELSE 5 END");
+    } else {
         match($sort) {
             'oldest' => $query->oldest(),
-            'priority' => $query->orderByRaw("FIELD(priority, 'urgent', 'high', 'medium', 'low')"),
             'due_date' => $query->orderBy('due_date'),
             'status' => $query->orderBy('status'),
             default => $query->latest(),
         };
-
-        $tasks = $query->paginate(15);
-        $currentPriority = $request->get('priority', '');
-        $currentStatus = $request->get('status', '');
-        $currentSort = $sort;
-
-        return view('tasks.index', compact('tasks', 'currentPriority', 'currentStatus', 'currentSort'));
     }
+
+    $tasks = $query->paginate(15);
+    $currentPriority = $request->get('priority', '');
+    $currentStatus = $request->get('status', '');
+    $currentSort = $sort;
+
+    return view('tasks.index', compact('tasks', 'currentPriority', 'currentStatus', 'currentSort'));
+}
 
     public function create()
     {
