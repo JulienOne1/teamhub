@@ -4,7 +4,13 @@
 
 @section('content')
 <div class="px-4 sm:px-0">
-    <h1 class="text-3xl font-bold text-gray-900 mb-8">Dashboard</h1>
+    <h1 class="text-5xl font-bold text-center mb-12 mt-8" style="
+        background: linear-gradient(145deg, #fbbf24, #f59e0b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+    ">Dashboard</h1>
 
     <!-- Stats -->
     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 mb-8">

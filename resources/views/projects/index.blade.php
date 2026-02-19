@@ -4,13 +4,18 @@
 
 @section('content')
 <div class="px-4 sm:px-0">
-    <div class="sm:flex sm:items-center sm:justify-between mb-8">
+    <div class="mb-6">
         <div>
-            <h1 class="text-3xl font-bold text-gray-900">Projects</h1>
-            <p class="mt-2 text-sm text-gray-200">A list of all projects in your organization.</p>
+            <h1 class="text-5xl font-bold text-center mb-8 mt-8" style="
+                background: linear-gradient(145deg, #fbbf24, #f59e0b);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+            ">Projects</h1>
         </div>
-        <div class="mt-4 sm:mt-0">
-            <a href="{{ url('/projects/create') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+        <div class="text-center mb-6">
+            <a href="{{ url('/projects/create') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700">
                 Create Project
             </a>
         </div>

@@ -14,12 +14,28 @@
 
         .glass {
             background: linear-gradient(135deg, #fbd978 0%, #f8b86a 25%, #f09060 50%, #ed7070 75%, #e05050 100%);
+            background-size: 100% 150%;
+            animation: gradient-move 8s ease infinite;
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
+        @keyframes gradient-move {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
         .glass-nav {
             background: linear-gradient(135deg, #fcc84a 0%, #e8873a 50%, #f06060 100%);
+            background-size: 150% 100%;
+            animation: gradient-move 8s ease infinite;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.4);
             position: fixed;
@@ -66,7 +82,7 @@
                 <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
                     <span class="text-white font-black text-xl tracking-tighter" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">TH</span>
                 </div>
-                <a href="/" class="text-3xl logo-3d">TeamHub</a>
+                <a href="/" class="text-3xl logo-3d" style="filter: none;">TeamHub</a>
             </div>
             <div class="flex items-center gap-6">
                 <a href="/dashboard" class="text-gray-800 font-medium hover:text-gray-600 transition">
