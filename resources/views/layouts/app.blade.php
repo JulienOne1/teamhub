@@ -73,8 +73,8 @@
 
         .watermark {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: -20%;
+            left: -20%;
             width: 200%;
             height: 200%;
             pointer-events: none;
@@ -104,6 +104,10 @@
     <!-- Wasserzeichen -->
     <div class="watermark">
         <div class="watermark-text">
+            TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION •<br>
+            TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION •<br>
+            TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION •<br>
+            TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION •<br>
             TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION •<br>
             TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION •<br>
             TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION • TEST SITE • JOB APPLICATION •<br>
