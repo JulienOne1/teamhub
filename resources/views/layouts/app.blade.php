@@ -82,7 +82,10 @@
                 <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
                     <span class="text-white font-black text-xl tracking-tighter" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">TH</span>
                 </div>
-                <a href="/" class="text-3xl logo-3d" style="filter: none;">TeamHub</a>
+                <div class="flex flex-col">
+                    <a href="/" class="text-3xl logo-3d leading-none" style="filter: none;">TeamHub</a>
+                    <span class="text-xs text-gray-700 font-medium italic">This is only a test site for my Job Applications</span>
+                </div>
             </div>
             <div class="flex items-center gap-6">
                 <a href="/dashboard" class="text-gray-800 font-medium hover:text-gray-600 transition">
