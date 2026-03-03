@@ -1,6 +1,6 @@
 {
-  "buildCommand": "composer install --no-dev --optimize-autoloader && echo 'Build complete'",
-  "installCommand": "echo 'No npm install needed'",
+  "buildCommand": "composer install --no-dev --optimize-autoloader",
+  "installCommand": "echo 'Skipping npm install'",
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.1"
