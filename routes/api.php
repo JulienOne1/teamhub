@@ -18,9 +18,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
     
     // API Resources
-    Route::apiResource('projects', ProjectController::class);
-    Route::apiResource('tasks', TaskController::class);
-    Route::apiResource('users', UserController::class)->only(['index', 'show']);
+    Route::apiResource('projects', ProjectController::class)->names('api.projects');
+    Route::apiResource('tasks', TaskController::class)->names('api.tasks');
+    Route::apiResource('users', UserController::class)->only(['index', 'show'])->names('api.users');
     
     // Additional routes
     Route::get('projects/{project}/tasks', [ProjectController::class, 'tasks']);
