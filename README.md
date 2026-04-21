@@ -36,18 +36,19 @@ An internal web application for managing employees, projects, and tasks. Built w
 - Test Suite — 21 tests with 136 assertions using Pest
 
 
-### Tech Stack
+## Tech Stack
 
-Technology          Purpose
-------------------------------------------
-Laravel 12          Web Framework
-PHP 8.4             Backend Language
-SQLite              Database
-Laravel Sanctum     API Authentication
-Tailwind CSS        UI Styling
-Pest                Testing Framework
-Vite                Asset Bundling
-------------------------------------------
+| Technology | Purpose |
+|---|---|
+| Laravel 12 | Web Framework |
+| PHP 8.4 | Backend Language |
+| SQLite | Database |
+| Laravel Sanctum | API Authentication |
+| Tailwind CSS | UI Styling |
+| Pest | Testing Framework |
+
+---
+
 
 ### Getting Started
 
@@ -91,15 +92,16 @@ php artisan serve
 Visit `http://127.0.0.1:8000` — the app is ready.
 
 
-### Demo Credentials
+### Default Test Credentials
 
-Role        Email                   Password
----------------------------------------------
-Admin       admin@teamhub.test      password
----------------------------------------------
+| Role | Email | Password |
+|---|---|---|
+| Admin | admin@teamhub.test | password |
+
+---
 
 ### Project Structure
-
+```
 teamhub/
 ├── app/
 │   ├── Http/
@@ -140,8 +142,8 @@ teamhub/
             ├── ProjectTest.php
             ├── TaskTest.php
             └── UserTest.php
-
-
+```
+---
 
 ## REST API
 
@@ -157,34 +159,57 @@ All protected endpoints require a Bearer token:
 
 ### Endpoints Overview
 
-Method  Endpoint            Description                    Auth
-----------------------------------------------------------------
-POST    /api/register            | Register a new user     ❌
-POST    /api/login               | Login and get token     ❌
-POST    /api/logout              | Logout current user     ✅
-GET     /api/me                  | Get current user        ✅
-GET     /api/projects            | List all projects       ✅
-POST    /api/projects            | Create a project        ✅
-GET     /api/projects/{id}       | Get single project      ✅
-PUT     /api/projects/{id}       | Update a project        ✅
-DELETE  /api/projects/{id}       | Delete a project        ✅
-GET     /api/projects/{id}/tasks | Get project tasks       ✅
-GET     /api/tasks               | List all tasks          ✅
-POST    /api/tasks               | Create a task           ✅
-GET     /api/tasks/{id}          | Get single task         ✅
-PUT     /api/tasks/{id}          | Update a task           ✅
-DELETE  /api/tasks/{id}          | Delete a task           ✅
-GET     /api/users               | List all users          ✅
-GET     /api/users/{id}          | Get single user         ✅
-GET     /api/users/{id}/projects | Get user's projects     ✅
-GET     /api/users/{id}/tasks    | Get user's tasks        ✅
+|Method  |Endpoint                 |Description              |Auth|
+|--------|-------------------------|-------------------------|---|
+|POST    |/api/register            | Register a new user     |❌|
+|POST    |/api/login               | Login and get token     |❌|
+|POST    |/api/logout              | Logout current user     |✅|
+|GET     |/api/me                  | Get current user        |✅|
+|GET     |/api/projects            | List all projects       |✅|
+|POST    |/api/projects            | Create a project        |✅|
+|GET     |/api/projects/{id}       | Get single project      |✅|
+|PUT     |/api/projects/{id}       | Update a project        |✅|
+|DELETE  |/api/projects/{id}       | Delete a project        |✅|
+|GET     |/api/projects/{id}/tasks | Get project tasks       |✅|
+|GET     |/api/tasks               | List all tasks          |✅|
+|POST    |/api/tasks               | Create a task           |✅|
+|GET     |/api/tasks/{id}          | Get single task         |✅|
+|PUT     |/api/tasks/{id}          | Update a task           |✅|
+|DELETE  |/api/tasks/{id}          | Delete a task           |✅|
+|GET     |/api/users               | List all users          |✅|
+|GET     |/api/users/{id}          | Get single user         |✅|
+|GET     |/api/users/{id}/projects | Get user's projects     |✅|
+|GET     |/api/users/{id}/tasks    | Get user's tasks        |✅|
 ----------------------------------------------------------------
 
 ### Available Values
 
-Project Status:     planning · active · on_hold · completed · cancelled
-Task Priority:      low · medium · high · urgent
-Task Status:        todo · in_progress · review · done
+#### Project Status
+| Value | Description |
+|---|---|
+| `planning` | Project is in planning phase |
+| `active` | Project is currently active |
+| `on_hold` | Project is on hold |
+| `completed` | Project is completed |
+| `cancelled` | Project is cancelled |
+
+#### Task Priority
+| Value | Description |
+|---|---|
+| `low` | Low priority |
+| `medium` | Medium priority |
+| `high` | High priority |
+| `urgent` | Urgent priority |
+
+#### Task Status
+| Value | Description |
+|---|---|
+| `todo` | Task is pending |
+| `in_progress` | Task is in progress |
+| `review` | Task is in review |
+| `done` | Task is completed |
+
+---
 
 
 ### Test Coverage
